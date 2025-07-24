@@ -1,19 +1,10 @@
 # Copilot Instructions: Habits Tracker Website
 
-## Technology Stack
-
-This project uses the following technologies:
-
-- **Vite.js**: For fast development and optimized builds
-- **React.js**: UI library with functional components and hooks
-- **TypeScript**: For static typing and improved developer experience
-- **TailwindCSS**: For utility-first styling
-- **Shadcn UI**: For customizable UI components
-- **React Hook Form**: For form handling and validation
-
 ## Project Setup
 
 The project is already created with Vite.js. React.js, TypeScript, TailwindCSS, Shadcn UI and React Hook Form are all installed and configured.
+
+For now, this is a single-page application with one route.
 
 ### Adding Shadcn UI Components
 
