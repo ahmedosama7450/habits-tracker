@@ -8,6 +8,9 @@ export const authApi = {
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}`,
+        queryParams: {
+          prompt: 'select_account',
+        },
       },
     });
     
@@ -16,7 +19,9 @@ export const authApi = {
   },
 
   async signOut() {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut({
+      scope: 'global' // This ensures sign out from all sessions
+    });
     if (error) throw error;
   },
 

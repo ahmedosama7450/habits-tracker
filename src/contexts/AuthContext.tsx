@@ -54,6 +54,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}`,
+        queryParams: {
+          prompt: 'select_account',
+        },
       },
     });
     
@@ -61,7 +64,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
+    // Clear any local session state first
+    setSession(null);
+    setUser(null);
+    
+    // Sign out from Supabase
+    const { error } = await supabase.auth.signOut({
+      scope: 'global' // This ensures sign out from all sessions
+    });
+    
     if (error) throw error;
   };
 
