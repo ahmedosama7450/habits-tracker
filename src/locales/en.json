@@ -11,6 +11,8 @@
   "days": "days",
   "startDate": "Start Date",
   "selectDays": "Select Days",
+  "selectAll": "Select All",
+  "clearAll": "Clear All",
   "selectDates": "Select Dates",
   "save": "Save",
   "cancel": "Cancel",
@@ -62,9 +64,16 @@
     "signingIn": "Signing in...",
     "signInWithGoogle": "Continue with Google",
     "welcome": "Welcome to Habits Tracker",
-    "signInDescription": "Sign in to track your habits and build better routines",
+    "signInDescription": "Transform your daily routine with mindful habit tracking",
     "backToApp": "Back to App",
-    "privacyNote": "We respect your privacy. Your data is secure and only you can access it."
+    "privacyNote": "We respect your privacy. Your data is secure and only you can access it.",
+    "trackProgress": "Track Progress",
+    "buildStreaks": "Build Streaks",
+    "loading": "Loading...",
+    "buildBetter": "Build Better",
+    "habits": "Habits",
+    "heroDescription": "Transform your daily routine with mindful habit tracking and achieve your goals one day at a time.",
+    "signInError": "Failed to sign in with Google"
   },
   "notFound": {
     "title": "Page Not Found",

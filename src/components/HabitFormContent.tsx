@@ -96,6 +96,24 @@ export function HabitFormContent({
     }
   };
 
+  const handleSelectAllWeekdays = () => {
+    const allWeekdays = weekdays.map(({ index }) => index);
+    setValue('weekdays', allWeekdays);
+  };
+
+  const handleClearAllWeekdays = () => {
+    setValue('weekdays', []);
+  };
+
+  const handleSelectAllMonthDays = () => {
+    const allMonthDays = Array.from({ length: 31 }, (_, i) => i + 1);
+    setValue('monthDays', allMonthDays);
+  };
+
+  const handleClearAllMonthDays = () => {
+    setValue('monthDays', []);
+  };
+
   const onFormSubmit = (data: FormData) => {
     let schedule: HabitSchedule;
 
@@ -186,9 +204,9 @@ export function HabitFormContent({
           <Label className="text-start block font-medium">
             {t('selectDays')}
           </Label>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded border">
             {weekdays.map(({ index, key }) => (
-              <div key={index} className="flex items-center space-x-2 rtl:space-x-reverse">
+              <div key={index} className="flex items-center gap-1">
                 <Checkbox
                   id={`weekday-${index}`}
                   checked={watchedWeekdays.includes(index)}
@@ -201,6 +219,26 @@ export function HabitFormContent({
               </div>
             ))}
           </div>
+          <div className="flex gap-2 justify-start">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleSelectAllWeekdays}
+              className="text-xs px-3 py-1 h-auto"
+            >
+              {t('selectAll')}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleClearAllWeekdays}
+              className="text-xs px-3 py-1 h-auto"
+            >
+              {t('clearAll')}
+            </Button>
+          </div>
         </div>
       )}
 
@@ -210,7 +248,7 @@ export function HabitFormContent({
           <Label className="text-start block font-medium">
             {t('selectDaysOfMonth')}
           </Label>
-          <div className="grid grid-cols-7 gap-2 max-h-40 overflow-y-auto p-3 bg-gray-50 dark:bg-gray-900 rounded border">
+          <div className="grid grid-cols-7 gap-2 max-h-32 overflow-y-auto p-3 bg-gray-50 dark:bg-gray-900 rounded border">
             {monthDays.map(day => (
               <div key={day} className="flex flex-col items-center">
                 <Checkbox
@@ -227,6 +265,26 @@ export function HabitFormContent({
                 </Label>
               </div>
             ))}
+          </div>
+          <div className="flex gap-2 justify-start">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleSelectAllMonthDays}
+              className="text-xs px-3 py-1 h-auto"
+            >
+              {t('selectAll')}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleClearAllMonthDays}
+              className="text-xs px-3 py-1 h-auto"
+            >
+              {t('clearAll')}
+            </Button>
           </div>
         </div>
       )}

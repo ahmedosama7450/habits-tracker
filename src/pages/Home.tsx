@@ -5,10 +5,12 @@ import { SettingsDialog } from '@/components/SettingsDialog';
 import { useHabits } from '@/hooks/useHabits';
 import { useHabitCompletions } from '@/hooks/useHabitCompletions';
 import { useSettings } from '@/hooks/useSettings';
+import { useTranslation } from '@/hooks/useI18nTranslation';
 import { getPreviousMonth, getNextMonth } from '@/utils/dateUtils';
 import type { Habit } from '@/types';
 
 export function Home() {
+  const { t } = useTranslation();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [settingsOpen, setSettingsOpen] = useState(false);
   
@@ -89,7 +91,7 @@ export function Home() {
           {loading && (
             <div className="text-center py-8">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
-              <p className="mt-2 text-gray-600">Loading...</p>
+              <p className="mt-2 text-gray-600">{t('auth.loading')}</p>
             </div>
           )}
 
