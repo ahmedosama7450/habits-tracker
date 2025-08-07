@@ -65,5 +65,11 @@
     "signInDescription": "Sign in to track your habits and build better routines",
     "backToApp": "Back to App",
     "privacyNote": "We respect your privacy. Your data is secure and only you can access it."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved. Let's get you back on track with your habits!",
+    "backToHome": "Back to Home",
+    "helpText": "Need help? Check your URL or contact support."
   }
 }

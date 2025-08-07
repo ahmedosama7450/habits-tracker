@@ -4,6 +4,7 @@ import { AppLayout } from '@/components/AppLayout';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { Home } from '@/pages/Home';
 import { SignIn } from '@/pages/SignIn';
+import { NotFound } from '@/pages/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               } 
             />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AppLayout>
       </Router>
