@@ -6,14 +6,12 @@
   "nextMonth": "Next Month",
   "habitName": "Habit Name",
   "schedule": "Schedule",
-  "scheduleWeekly": "Weekly",
-  "scheduleMonthly": "Monthly Dates",
-  "days": "days",
+
   "startDate": "Start Date",
   "selectDays": "Select Days",
   "selectAll": "Select All",
   "clearAll": "Clear All",
-  "selectDates": "Select Dates",
+
   "save": "Save",
   "cancel": "Cancel",
   "edit": "Edit",
@@ -25,7 +23,7 @@
   "clearData": "Clear All Data",
   "confirmClearData": "Are you sure you want to clear all data? This action cannot be undone.",
   "day": "Day",
-  "yourHabits": "Your Habits",
+
   "editHabit": "Edit Habit",
   "updateHabit": "Update Habit",
   "enterHabitName": "Enter habit name",
@@ -65,8 +63,6 @@
     "signInWithGoogle": "Continue with Google",
     "welcome": "Welcome to Habits Tracker",
     "signInDescription": "Transform your daily routine with mindful habit tracking",
-    "backToApp": "Back to App",
-    "privacyNote": "We respect your privacy. Your data is secure and only you can access it.",
     "trackProgress": "Track Progress",
     "buildStreaks": "Build Streaks",
     "loading": "Loading...",
@@ -78,7 +74,6 @@
   "notFound": {
     "title": "Page Not Found",
     "description": "The page you're looking for doesn't exist or has been moved. Let's get you back on track with your habits!",
-    "backToHome": "Back to Home",
-    "helpText": "Need help? Check your URL or contact support."
+    "backToHome": "Back to Home"
   }
 }

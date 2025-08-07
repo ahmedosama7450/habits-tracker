@@ -163,11 +163,6 @@ export function SignIn() {
                 </span>
               </div>
             </Button>
-
-            {/* Privacy Note */}
-            <p className="text-sm text-gray-500 text-center leading-relaxed">
-              {t('auth.privacyNote')}
-            </p>
           </div>
         </div>
       </div>
