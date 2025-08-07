@@ -19,5 +19,12 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Allow exporting constants and types from component files for UI components
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
   },
 ])

@@ -1,8 +1,29 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { AppLayout } from '@/components/AppLayout';
+import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { Home } from '@/pages/Home';
+import { SignIn } from '@/pages/SignIn';
+
 function App() {
   return (
-    <>
-      <h1>Vite + React + TailwindCSS</h1>
-    </>
+    <AuthProvider>
+      <Router>
+        <AppLayout>
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="/signin" element={<SignIn />} />
+          </Routes>
+        </AppLayout>
+      </Router>
+    </AuthProvider>
   );
 }
 
