@@ -67,15 +67,14 @@ Example usage:
 - **Authentication**: Google OAuth via Supabase Auth
 - **Real-time sync**: Data synchronized across devices
 - **API Layer**: Centralized in `src/lib/api.ts` with type-safe functions
-- **Database Schema**: Four main tables (profiles, habits, habit_completions, user_settings)
+- **Database Schema**: Three main tables (profiles, habits, habit_completions)
 - **Error Handling**: Comprehensive error handling throughout the API layer
 
 ### Database Tables
 
-1. **profiles**: User information linked to Supabase auth users
+1. **profiles**: User information linked to Supabase auth users (includes language and tracking preferences)
 2. **habits**: Habit definitions with scheduling configuration
 3. **habit_completions**: Daily completion tracking records
-4. **user_settings**: User preferences (language, tracking start date)
 
 ### API Structure
 

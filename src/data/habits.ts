@@ -7,7 +7,7 @@ export const mockHabits: Habit[] = [
     name: 'Drink 8 glasses of water',
     schedule: {
       type: 'weekly',
-      weekdays: [1, 2, 3, 4, 5], // Monday to Friday
+      weekdays: [ ], // Monday to Friday
     },
     startDate: new Date('2025-01-01'),
   },
@@ -34,7 +34,7 @@ export const mockHabits: Habit[] = [
     name: 'Take vitamins',
     schedule: {
       type: 'weekly',
-      weekdays: [1, 2, 3, 4, 5], // Monday to Friday
+      weekdays: [ ], // Monday to Friday
     },
     startDate: new Date('2025-01-10'), // Started mid-month
   },

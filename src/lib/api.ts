@@ -27,14 +27,12 @@ export const authApi = {
 
   async getCurrentUser(): Promise<User | null> {
     try {
-      console.log('Getting current user...');
-      
-      // First check if we have a session
+      // Get the current session
       const { data: { session }, error: sessionError } = await supabase.auth.getSession();
       
       if (sessionError) {
         console.error('Session error:', sessionError);
-        throw sessionError;
+        return null;
       }
       
       if (!session?.user) {
@@ -45,26 +43,16 @@ export const authApi = {
       const user = session.user;
       console.log('Session user found:', user.id);
 
-      // For now, let's skip the profile creation and just return basic user info
-      // This will help us identify if the issue is with the database queries
-      return {
-        id: user.id,
-        email: user.email!,
-        fullName: user.user_metadata?.full_name,
-        avatarUrl: user.user_metadata?.avatar_url,
-      };
-
-      /* Commented out profile logic for debugging
       // Get or create profile
       const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
-        .single();
+        .maybeSingle(); // Use maybeSingle instead of single to avoid errors when no row exists
 
-      if (profileError && profileError.code !== 'PGRST116') {
+      if (profileError) {
         console.error('Profile fetch error:', profileError);
-        throw profileError;
+        return null;
       }
 
       if (!profile) {
@@ -77,13 +65,20 @@ export const authApi = {
             email: user.email!,
             full_name: user.user_metadata?.full_name,
             avatar_url: user.user_metadata?.avatar_url,
+            language: 'ar', // Default language
+            first_tracking_month: new Date().toISOString().slice(0, 7), // Current month
           })
           .select()
-          .single();
+          .maybeSingle();
 
         if (createError) {
           console.error('Profile creation error:', createError);
-          throw createError;
+          return null;
+        }
+        
+        if (!newProfile) {
+          console.error('Failed to create profile - no data returned');
+          return null;
         }
         
         return {
@@ -101,10 +96,9 @@ export const authApi = {
         fullName: profile.full_name || undefined,
         avatarUrl: profile.avatar_url || undefined,
       };
-      */
     } catch (error) {
       console.error('getCurrentUser error:', error);
-      throw error;
+      return null; // Return null instead of throwing to prevent crashes
     }
   },
 
@@ -339,9 +333,9 @@ export const settingsApi = {
     if (!user) throw new Error('User not authenticated');
 
     const { data, error } = await supabase
-      .from('user_settings')
-      .select('*')
-      .eq('user_id', user.id)
+      .from('profiles')
+      .select('language, first_tracking_month')
+      .eq('id', user.id)
       .single();
 
     if (error && error.code !== 'PGRST116') {
@@ -349,26 +343,12 @@ export const settingsApi = {
     }
 
     if (!data) {
-      // Create default settings
-      const defaultSettings = {
-        language: 'ar' as const,
-        first_tracking_month: new Date().toISOString().slice(0, 7),
-      };
-
-      const { data: newSettings, error: createError } = await supabase
-        .from('user_settings')
-        .insert({
-          user_id: user.id,
-          ...defaultSettings,
-        })
-        .select()
-        .single();
-
-      if (createError) throw createError;
-
+      // This shouldn't happen if AuthContext is working properly, 
+      // but let's handle it gracefully by returning default settings
+      console.warn('Profile not found for user, using default settings');
       return {
-        language: newSettings.language,
-        firstTrackingMonth: newSettings.first_tracking_month,
+        language: 'ar',
+        firstTrackingMonth: new Date().toISOString().slice(0, 7),
       };
     }
 
@@ -391,10 +371,10 @@ export const settingsApi = {
     if (settings.firstTrackingMonth) updateData.first_tracking_month = settings.firstTrackingMonth;
 
     const { data, error } = await supabase
-      .from('user_settings')
+      .from('profiles')
       .update(updateData)
-      .eq('user_id', user.id)
-      .select()
+      .eq('id', user.id)
+      .select('language, first_tracking_month')
       .single();
 
     if (error) throw error;

@@ -103,13 +103,13 @@ export function HabitFormContent({
       case 'weekly':
         schedule = {
           type: 'weekly',
-          weekdays: data.weekdays.length > 0 ? data.weekdays : [1, 2, 3, 4, 5], // Default to weekdays
+          weekdays: data.weekdays.length > 0 ? data.weekdays : [ ], // Default to weekdays
         };
         break;
       case 'monthly':
         schedule = {
           type: 'monthly',
-          monthDays: data.monthDays.length > 0 ? data.monthDays : [1], // Default to first day
+          monthDays: data.monthDays.length > 0 ? data.monthDays : [], // Default to first day
         };
         break;
     }

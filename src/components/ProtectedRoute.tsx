@@ -7,18 +7,23 @@ interface ProtectedRouteProps {
 }
 
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, user, session } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    // Don't redirect if still loading or already on sign-in page
-    if (isLoading || location.pathname === '/signin') {
-      return;
-    }
+  console.log('ProtectedRoute render:', { 
+    isAuthenticated, 
+    isLoading, 
+    hasUser: !!user, 
+    hasSession: !!session,
+    pathname: location.pathname 
+  });
 
-    // Redirect to sign-in if not authenticated
-    if (!isAuthenticated) {
+  useEffect(() => {
+    console.log('ProtectedRoute useEffect:', { isLoading, isAuthenticated, pathname: location.pathname });
+    
+    if (!isLoading && !isAuthenticated && location.pathname !== '/signin') {
+      console.log('Redirecting to sign-in page');
       navigate('/signin', { replace: true });
     }
   }, [isAuthenticated, isLoading, navigate, location.pathname]);
@@ -35,7 +40,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
     );
   }
 
-  // Don't render children if not authenticated (will redirect)
+  // Don't render children if not authenticated
   if (!isAuthenticated) {
     return null;
   }

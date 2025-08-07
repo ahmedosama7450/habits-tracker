@@ -2,13 +2,21 @@ import { useState, useEffect } from 'react';
 import type { AppSettings } from '@/types';
 import { settingsApi } from '@/lib/api';
 import { defaultSettings } from '@/types';
+import { useAuth } from './useAuth';
 
 export function useSettings() {
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
   const [settings, setSettings] = useState<AppSettings>(defaultSettings);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Don't try to load settings if not authenticated or still loading auth
+    if (authLoading || !isAuthenticated) {
+      setLoading(false);
+      return;
+    }
+
     const loadSettings = async () => {
       try {
         setLoading(true);
@@ -25,7 +33,7 @@ export function useSettings() {
     };
 
     loadSettings();
-  }, []);
+  }, [isAuthenticated, authLoading]);
 
   const updateSettings = async (newSettings: Partial<AppSettings>) => {
     try {

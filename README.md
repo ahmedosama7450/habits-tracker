@@ -89,10 +89,9 @@ A modern, responsive web application for tracking daily habits built with React,
 
 The application uses four main tables:
 
-- **profiles**: User information linked to Supabase auth
+- **profiles**: User accounts and preferences (includes settings)
 - **habits**: Habit definitions with scheduling
 - **habit_completions**: Daily completion tracking
-- **user_settings**: User preferences and configuration
 
 All tables include Row Level Security (RLS) policies to ensure data privacy.
 

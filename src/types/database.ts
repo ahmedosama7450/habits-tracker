@@ -15,6 +15,8 @@ export interface Database {
           email: string
           full_name: string | null
           avatar_url: string | null
+          language: 'en' | 'ar'
+          first_tracking_month: string
           created_at: string
           updated_at: string
         }
@@ -23,6 +25,8 @@ export interface Database {
           email: string
           full_name?: string | null
           avatar_url?: string | null
+          language?: 'en' | 'ar'
+          first_tracking_month?: string
           created_at?: string
           updated_at?: string
         }
@@ -31,6 +35,8 @@ export interface Database {
           email?: string
           full_name?: string | null
           avatar_url?: string | null
+          language?: 'en' | 'ar'
+          first_tracking_month?: string
           created_at?: string
           updated_at?: string
         }
@@ -128,41 +134,6 @@ export interface Database {
             foreignKeyName: "habit_completions_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      user_settings: {
-        Row: {
-          id: string
-          user_id: string
-          language: 'en' | 'ar'
-          first_tracking_month: string
-          created_at: string
-          updated_at: string
-        }
-        Insert: {
-          id?: string
-          user_id: string
-          language?: 'en' | 'ar'
-          first_tracking_month?: string
-          created_at?: string
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          user_id?: string
-          language?: 'en' | 'ar'
-          first_tracking_month?: string
-          created_at?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "user_settings_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: true
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           }

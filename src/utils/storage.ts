@@ -19,7 +19,7 @@ export function getHabits(): Habit[] {
           name: 'Drink 8 glasses of water',
           schedule: {
             type: 'weekly',
-            weekdays: [1, 2, 3, 4, 5], // Monday to Friday
+            weekdays: [ ], // Monday to Friday
           },
           startDate: new Date('2025-07-01'),
         },
