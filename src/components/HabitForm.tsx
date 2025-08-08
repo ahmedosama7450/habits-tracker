@@ -37,7 +37,7 @@ export function HabitForm({ onSubmit }: HabitFormProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 h-12 font-medium">
+        <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 h-11 sm:h-12 font-medium w-full sm:w-auto max-w-full">
           <Plus className="h-4 w-4 me-2" />
           {t('addHabit')}
         </Button>

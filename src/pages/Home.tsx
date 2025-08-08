@@ -76,7 +76,7 @@ export function Home() {
         onSettingsClick={() => setSettingsOpen(true)} 
       />
       
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-2 sm:px-4 py-8">
         <div className="space-y-6">
           {/* Error Messages */}
           {(habitsError || completionsError || settingsError) && (

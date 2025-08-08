@@ -67,21 +67,21 @@ export function HabitsCalendar({
     return (
       <div className="space-y-6" key={calendarKey}>
         <Card className="bg-emerald-50 border-emerald-200">
-          <CardContent className="p-6">
+          <CardContent className="p-3 sm:p-6">
             {/* Month Navigation and Add Habit Button */}
-            <div className="flex items-center justify-between mb-6 pb-6 border-b border-emerald-200">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6 pb-6 border-b border-emerald-200">
+              <div className="flex items-center justify-between w-full sm:w-auto sm:gap-4 min-w-0">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={onPreviousMonth}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3"
                 >
                   <ChevronLeft className="h-4 w-4 rtl:rotate-180" />
                   {t('previousMonth')}
                 </Button>
                 
-                <h2 className="text-xl font-semibold text-emerald-800">
+                <h2 className="text-lg sm:text-xl font-semibold text-emerald-800 flex-1 text-center sm:text-left">
                   {(() => {
                     const monthKey = currentDate.toLocaleDateString('en', { month: 'long' }).toLowerCase();
                     const monthName = getMonth(monthKey);
@@ -94,7 +94,7 @@ export function HabitsCalendar({
                   variant="outline"
                   size="sm"
                   onClick={onNextMonth}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3"
                 >
                   {t('nextMonth')}
                   <ChevronRight className="h-4 w-4 rtl:rotate-180" />
@@ -170,21 +170,21 @@ export function HabitsCalendar({
     <div className="space-y-6" key={calendarKey}>
       {/* Calendar Grid */}
       <Card className="shadow-none border-none">
-        <CardContent>
+        <CardContent className="p-3 sm:p-6">
           {/* Month Navigation and Add Habit Button */}
-          <div className="flex items-center justify-between mb-6 pb-6 border-gray-200">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6 pb-6 border-gray-200">
+            <div className="flex items-center justify-between w-full sm:w-auto sm:gap-4 min-w-0">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={onPreviousMonth}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3"
               >
                 <ChevronLeft className="h-4 w-4 rtl:rotate-180" />
                 {t('previousMonth')}
               </Button>
               
-              <h2 className="text-xl font-semibold text-emerald-800">
+              <h2 className="text-lg sm:text-xl font-semibold text-emerald-800 flex-1 text-center sm:text-left">
                 {(() => {
                   const monthKey = currentDate.toLocaleDateString('en', { month: 'long' }).toLowerCase();
                   const monthName = getMonth(monthKey);
@@ -197,7 +197,7 @@ export function HabitsCalendar({
                 variant="outline"
                 size="sm"
                 onClick={onNextMonth}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3"
               >
                 {t('nextMonth')}
                 <ChevronRight className="h-4 w-4 rtl:rotate-180" />
